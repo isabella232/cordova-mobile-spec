@@ -148,7 +148,6 @@ var top_dir =             process.cwd() + path.sep,
                    .boolean("linkplugins").describe("linkplugins", "Use the --link flag when running `cordova plugin add`.\n")
                    .boolean("linkplatforms").describe("linkplatforms", "Use the --link flag when running `cordova platform add`.\n")
                    .boolean("link").describe("link", "Alias for --linkplugins --linkplatforms.\n")
-                   .string("webview").describe("webview", "Use --webview=crosswalk to install the crosswalk plugin") // TODO
                    .alias("h", "help")
                    .argv;
 
@@ -542,10 +541,6 @@ function installPlugins() {
 
         pluginAdd('cordova-plugin-test-framework', searchPath, allPluginFlags);
         pluginAdd('cordova-plugin-device', searchPath, allPluginFlags);
-
-        if (argv.webview == 'crosswalk') {
-            pluginAdd('cordova-plugin-crosswalk-webview', searchPath, allPluginFlags);
-        }
 
         plugins.forEach(function(p) {
             var sp = SEARCH_PATHS.hasOwnProperty(p) ? SEARCH_PATHS[p] : searchPath;
